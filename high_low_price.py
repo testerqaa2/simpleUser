@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import sync_playwright
 
 def high_low_price():
     """Test Sorting on both Chrome and Firefox"""
