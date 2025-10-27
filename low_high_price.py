@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright, expect
 
-def high_low_price():
+def low_high_price():
     """Test Sorting on both Chrome and Firefox"""
     browsers = ['chromium', 'firefox']
     
@@ -74,23 +74,23 @@ def high_low_price():
 
                 print("✅ All prices are as expected!")
 
-                print("10. Select from High to Low Price")
-                page.select_option(".product_sort_container", "hilo")
+                print("10. Select from Low to High Price")
+                page.select_option(".product_sort_container", "lohi")
 
                 active_option = page.locator(".active_option").inner_text().strip()
-                expected_option = ("Price (high to low)") 
+                expected_option = ("Price (low to high)")
 
                 print("11. Verify option selected")
 
-                expected_first_price_after = ("$49.99")
-                expected_second_price_after = ("$29.99")
-                expected_last_price_after = ("$7.99")
+                expected_first_price_after = ("$7.99")
+                expected_second_price_after = ("$9.99")
+                expected_last_price_after = ("$49.99")
 
                 assert active_option == expected_option, \
                 f"Option selected isn't as expected. Current: '{active_option}' , Expected: '{expected_option}'"    
                 print(f"💡 Option selected is : '{expected_option}'")
 
-                print("12. Verify result High to Low Price")
+                print("12. Verify result Low to High Price")
                 actual_first_price = price_locator.first.inner_text()
 
                 assert actual_first_price.strip() == expected_first_price_after, \
@@ -112,4 +112,4 @@ def high_low_price():
                 print(f"16. Browser closed")
 
 if __name__ == "__main__":
-    high_low_price()
+    low_high_price()
